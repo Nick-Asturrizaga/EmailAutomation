@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{ subject }}</title>
+</head>
+<body>
+{% set col0_style = 'font-weight: bold; padding: 2px; border-right: 1px solid; border-top: 1px solid;' %}
+<div class="container">
+    <main>
+        <table style="border: 1px solid">
+            <thead>
+            <tr>
+                <th colspan="2"
+                    style="text-align: center; margin:0; font-weight: bold; background: cadetblue; padding: 2px;">
+                    Network Services - Planned Maintenance - <span style="color: darkred">Status Update</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="{{ col0_style }}">Summary</td>
+                <td>{{ summary.replace('\n', '<br>')|safe }}</td>
+            </tr>
+            <tr>
+                <td style="{{ col0_style }}">Status</td>
+                <td>{{ status }}</td>
+            </tr>
+            <tr>
+                <td style="{{ col0_style }}">Who is impacted?</td>
+                <td>{{ who_is_impacted }}</td>
+            </tr>
+            <tr>
+                <td style="{{ col0_style }}">When?</td>
+                <td>{{ when }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+
+    </footer>
+</div>
+</body>
+
+</html>

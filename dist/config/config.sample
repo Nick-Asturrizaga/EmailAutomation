@@ -1,0 +1,20 @@
+serviceNow:
+  url: https://dev258584.service-now.com
+  username: admin
+  password: xYQ=ulZe9*P9
+  query:
+    states:
+      - 3
+      - 6
+
+smtp:
+  server: email-smtp.eu-west-1.amazonaws.com
+  port: 465
+  username: AKIAYZV5IWEVTYUZ4HX2
+  password: BEAKaKZ6YmrDQcSTUNQGro6sFYj9Kp5bv2gFVm5Ai2VU
+
+emails:
+  sender: Cloud DevOps Expert <goncalves.miguel@cloud-devops.expert>
+  subject: Change request - Update
+  receivers:
+    - Miguel V <miguel.goncalves.v@gmail.com>

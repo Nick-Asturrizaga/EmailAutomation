@@ -1,0 +1,9 @@
+.idea
+.venv
+.DS_Store
+__pycache__
+config.yaml
+requirements.txt.client
+data
+test.json
+instance
