@@ -1,0 +1,19 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Create venv
+      ansible.builtin.command:
+        cmd: python -m venv .venv
+
+    - name: Activate venv
+      shell: source .venv/bin/activate
+
+    - name: Install requirements
+      ansible.builtin.command:
+        cmd: pip install -r requirements.txt
+
+    - name: Start End Change Email Automation
+      ansible.builtin.command:
+        cmd: python huey_consumer.py email_queue.huey
