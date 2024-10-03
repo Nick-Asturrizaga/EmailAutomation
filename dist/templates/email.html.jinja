@@ -6,6 +6,7 @@
 </head>
 <body>
 {% set col0_style = 'font-weight: bold; padding: 2px; border-right: 1px solid; border-top: 1px solid;' %}
+{% set col1_style = 'padding: 2px; border-top: 1px solid;' %}
 <div class="container">
     <main>
         <table style="border: 1px solid">
@@ -20,19 +21,19 @@
             <tbody>
             <tr>
                 <td style="{{ col0_style }}">Summary</td>
-                <td>{{ summary.replace('\n', '<br>')|safe }}</td>
+                <td style="{{ col1_style }}">{{ summary.replace('\n', '<br>')|safe }}</td>
             </tr>
             <tr>
                 <td style="{{ col0_style }}">Status</td>
-                <td>{{ status }}</td>
+                <td style="{{ col1_style }}">{{ status }}</td>
             </tr>
             <tr>
                 <td style="{{ col0_style }}">Who is impacted?</td>
-                <td>{{ who_is_impacted }}</td>
+                <td style="{{ col1_style }}">{{ who_is_impacted }}</td>
             </tr>
             <tr>
                 <td style="{{ col0_style }}">When?</td>
-                <td>{{ when }}</td>
+                <td style="{{ col1_style }}">{{ when }}</td>
             </tr>
             </tbody>
         </table>

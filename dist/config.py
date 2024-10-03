@@ -6,19 +6,24 @@ import yaml
 
 class Config:
     class ServiceNow:
-        def __init__(self, url, username, password):
+        def __init__(self, url, username, password, filter_, date_fields, capture, frequency_minutes):
             self.url = url
             self.username = username
             self.password = password
+            self.filter_ = filter_
+            self.date_fields = date_fields
+            self.capture = capture
+            self.frequency_minutes = "*/{}".format(frequency_minutes)
 
         def __repr__(self):
             return "ServiceNow(url={}, username={}, password={})".format(self.url, self.username, self.password)
 
     class Emails:
-        def __init__(self, sender, subject, receivers):
+        def __init__(self, sender, subject, receivers, technical_issues):
             self.sender = sender
             self.subject = subject
             self.receivers = receivers
+            self.technical_issues = technical_issues
 
         def __repr__(self):
             return "Emails(sender={}, subject={}, receivers={})".format(self.sender, self.subject, self.receivers)
@@ -36,26 +41,35 @@ class Config:
         with open('./config/config.yaml', 'r') as f:
             content = yaml.safe_load(f)
 
+        service_now_map = content['serviceNow']
+
         self.service_now = Config.ServiceNow(
-            url=content['serviceNow']['url'],
-            username=content['serviceNow']['username'],
-            password=content['serviceNow']['password']
+            url=service_now_map['url'],
+            username=service_now_map['username'],
+            password=service_now_map['password'],
+            frequency_minutes=service_now_map['query']['frequency']['minutes'],
+            filter_=service_now_map['query']['filter'],
+            date_fields=service_now_map['query']['date_fields'],
+            capture=service_now_map['capture']
         )
+
+        emails_map = content['emails']
 
         self.emails = Config.Emails(
-            sender=content['emails']['sender'],
-            subject=content['emails']['subject'],
-            receivers=filter(None, content['emails']['receivers'])
+            sender=emails_map['sender'],
+            subject=emails_map['subject'],
+            receivers=filter(None, emails_map['receivers']),
+            technical_issues=filter(None, emails_map['technicalIssues'])
         )
+
+        smtp_map = content['smtp']
 
         self.smtp = Config.Smtp(
-            server=content['smtp']['server'],
-            port=content['smtp']['port'],
-            username=content['smtp']['username'],
-            password=content['smtp']['password']
+            server=smtp_map['server'],
+            port=smtp_map['port'],
+            username=smtp_map['username'],
+            password=smtp_map['password']
         )
-
-        print(self.smtp)
 
     def __repr__(self):
         return "Config ServiceNow {}, Emails {}, Smtp {}".format(self.service_now, self.emails, self.smtp)

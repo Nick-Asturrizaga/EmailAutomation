@@ -1,20 +1,35 @@
 serviceNow:
-  url: https://dev258584.service-now.com
+  url: https://<some_instance>.service-now.com
   username: admin
-  password: xYQ=ulZe9*P9
+  password: SOME_PASSWORD
   query:
-    states:
-      - 3
-      - 6
+    frequency:
+      minutes: 5
+    filter:
+      state:
+        - 3
+        - 6
+      implementation_risk:
+        - 2
+        - 3
+    date_fields:
+      - start_date
+      - end_date
+  capture:
+    description:
+      - "Impact: "
+      - "Impact of application: "
 
 smtp:
-  server: email-smtp.eu-west-1.amazonaws.com
+  server: some.server
   port: 465
-  username: AKIAYZV5IWEVTYUZ4HX2
-  password: BEAKaKZ6YmrDQcSTUNQGro6sFYj9Kp5bv2gFVm5Ai2VU
+  username: SOME_USER
+  password: SOME_PASSWORD
 
 emails:
-  sender: Cloud DevOps Expert <goncalves.miguel@cloud-devops.expert>
+  sender: Some Sender <sender@sender.domain>
   subject: Change request - Update
   receivers:
-    - Miguel V <miguel.goncalves.v@gmail.com>
+    - Some Receiver <some.receiver@gmail.com>
+  technicalIssues:
+    - Support <support@gmail.com>

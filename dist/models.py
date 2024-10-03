@@ -1,6 +1,16 @@
-from strenum import StrEnum
-
 from app import db
+
+
+class DetectedError(db.Model):
+    __tablename__ = 'detected_errors'
+    __table_args__ = {'extend_existing': True}
+
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.Text, index=True)
+    ticket = db.Column(db.Text, index=True)
+    sys_component = db.Column(db.Text, index=True)
+    error_message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
 
 
 class History(db.Model):
@@ -14,11 +24,6 @@ class History(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
     sys_updated_on = db.Column(db.DateTime, nullable=False)
     processed_at = db.Column(db.DateTime)
-
-
-class TicketStatus(StrEnum):
-    Closed = '3'
-    Scheduled = '4'
 
 
 class Ticket:

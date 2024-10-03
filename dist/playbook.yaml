@@ -8,7 +8,9 @@
         cmd: python -m venv .venv
 
     - name: Activate venv
-      shell: source .venv/bin/activate
+      ansible.builtin.shell: source .venv/bin/activate
+      args:
+        executable: /bin/bash
 
     - name: Install requirements
       ansible.builtin.command:
