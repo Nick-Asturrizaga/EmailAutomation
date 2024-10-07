@@ -38,20 +38,20 @@
   -<value1>
   -<value2>
 
-serviceNow.query.date_fields
-serviceNow.query.capture
+- `serviceNow.query.date_fields`
+- `serviceNow.query.capture`
  -<field_name>
   -<text to find the value to put on who is impacted>
 
-smtp.server
-smtp.port
-smtp.username
-smtp.password
-emails.sender
-emails.subject
+- `smtp.server`
+- `smtp.port`
+- `smtp.username`
+- `smtp.password`
+- `emails.sender`
+- `emails.subject`
 
-emails.receivers
+- `emails.receivers`
 -list of emails that will be sent when there are ticket changes
 
-emails.technicalIssues
+- `emails.technicalIssues`
 -list of emails that will be sent when there are technical issues
