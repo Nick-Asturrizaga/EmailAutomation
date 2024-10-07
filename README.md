@@ -34,9 +34,6 @@
 `ServiceNow.query.filter`
 
 `-list of fields to filter the API and the list of values`
- -<field_name>
-  -<value1>
-  -<value2>
 
 - `serviceNow.query.date_fields`
 - `serviceNow.query.capture`
