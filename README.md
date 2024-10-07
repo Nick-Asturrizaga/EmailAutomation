@@ -24,20 +24,20 @@
 
 
 
-serviceNow.url
+`serviceNow.url`
 
-serviceNow.username
--user authorized to call the API
-serviceNow.Password
+`serviceNow.username`
+`-user authorized to call the API`
+`serviceNow.Password`
 
-ServiceNow.query.frequency.minutes
--number of minutes between querying ServiceNow
-ServiceNow.query.filter
+`ServiceNow.query.frequency.minutes`
+`-number of minutes between querying ServiceNow`
+`ServiceNow.query.filter`
 
--list of fields to filter the API and the list of values
- -<field_name>
-  -<value1>
-  -<value2>
+`-list of fields to filter the API and the list of values`
+ `-<field_name>`
+  `-<value1>`
+  `-<value2>`
 
 serviceNow.query.date_fields
 serviceNow.query.capture
