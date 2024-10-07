@@ -24,11 +24,10 @@
 
 
 
-`serviceNow.url`
-
-`serviceNow.username`
-`-user authorized to call the API`
-`serviceNow.Password`
+- `serviceNow.url`
+- `serviceNow.username`
+-user authorized to call the API
+- `serviceNow.Password`
 
 `ServiceNow.query.frequency.minutes`
 `-number of minutes between querying ServiceNow`
