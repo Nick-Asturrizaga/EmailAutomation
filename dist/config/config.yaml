@@ -1,0 +1,38 @@
+serviceNow:
+  url: https://dev273038.service-now.com/
+  username: admin
+  password: X%w+ViFm5qN9
+  grantType: password
+  clientId: d00f7c79da11121019999243fd8fe6e7
+  clientSecret: aabbcc11
+  query:
+    maxRecords: 50
+    oldestDateInDays: 1825
+    frequencyInMinutes: 5
+    filter:
+      state:
+        - 3
+        - 6
+      implementation_risk:
+        - 2
+        - 3
+    dateFields:
+      - start_date
+      - end_date
+  capture:
+    description:
+      - "Impact: "
+      - "Impact of application: " 
+
+smtp:
+  server: email-smtp.us-east-2.amazonaws.com
+  username: AKIA3TD2S3HD2IT5DFF6
+  password: BAG+16yyzoFkS5NgBX9PD7KBjIZNYt/nFuKClRc6CLh9
+
+emails:
+  sender: Nick Asturrizaga <n.asturrizaga1@gmail.com>
+  subject: Change request - Update
+  receivers:
+  - Nick Asturrizaga <n.asturrizaga1@gmail.com>
+  - Nick Asturrizaga <nicholas_asturrizaga@fanniemae.com>
+  
