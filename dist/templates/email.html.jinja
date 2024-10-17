@@ -2,46 +2,85 @@
 <html lang="en">
 
 <head>
-    <title>{{ subject }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #8EAADB;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .header-content > img {
+            margin-right: 10px;
+            width: 50px;
+        }
+    </style>
 </head>
+
 <body>
-{% set col0_style = 'font-weight: bold; padding: 2px; border-right: 1px solid; border-top: 1px solid;' %}
-{% set col1_style = 'padding: 2px; border-top: 1px solid;' %}
 <div class="container">
-    <main>
-        <table style="border: 1px solid">
-            <thead>
-            <tr>
-                <th colspan="2"
-                    style="text-align: center; margin:0; font-weight: bold; background: cadetblue; padding: 2px;">
-                    Network Services - Planned Maintenance - <span style="color: darkred">Status Update</span>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td style="{{ col0_style }}">Summary</td>
-                <td style="{{ col1_style }}">{{ summary.replace('\n', '<br>')|safe }}</td>
-            </tr>
-            <tr>
-                <td style="{{ col0_style }}">Status</td>
-                <td style="{{ col1_style }}">{{ status }}</td>
-            </tr>
-            <tr>
-                <td style="{{ col0_style }}">Who is impacted?</td>
-                <td style="{{ col1_style }}">{{ who_is_impacted }}</td>
-            </tr>
-            <tr>
-                <td style="{{ col0_style }}">When?</td>
-                <td style="{{ col1_style }}">{{ when }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </main>
-
-    <footer>
-
-    </footer>
+    <table>
+        <tr>
+            <th colspan="2">
+                <div class="header-content">
+                    {{ maintenance_icon }}
+                    <span>Network Services – Planned Maintenance STARTING</span>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <td class="label">Summary description:</td>
+            <td>{{ summary.replace('\n', '<br>')|safe }}</td>
+        </tr>
+        <tr>
+            <td class="label">Status:</td>
+            <td>{{ status }}</td>
+        </tr>
+        <tr>
+            <td class="label">Who is impacted?</td>
+            <td>{{ who_is_impacted }}</td>
+        </tr>
+        <tr>
+            <td class="label">When?</td>
+            <td>{{ when }}</td>
+        </tr>
+    </table>
 </div>
 </body>
 

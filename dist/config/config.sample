@@ -2,9 +2,13 @@ serviceNow:
   url: https://<some_instance>.service-now.com
   username: admin
   password: SOME_PASSWORD
+  grantType: password
+  clientId: clientId
+  clientSecret: clientSecret
   query:
-    frequency:
-      minutes: 5
+    maxRecords: 50
+    oldestDateInDays: 1825
+    frequencyInMinutes: 5
     filter:
       state:
         - 3
@@ -12,7 +16,7 @@ serviceNow:
       implementation_risk:
         - 2
         - 3
-    date_fields:
+    dateFields:
       - start_date
       - end_date
   capture:
@@ -22,7 +26,6 @@ serviceNow:
 
 smtp:
   server: some.server
-  port: 465
   username: SOME_USER
   password: SOME_PASSWORD
 
@@ -31,5 +34,3 @@ emails:
   subject: Change request - Update
   receivers:
     - Some Receiver <some.receiver@gmail.com>
-  technicalIssues:
-    - Support <support@gmail.com>

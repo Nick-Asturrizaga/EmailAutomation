@@ -18,4 +18,4 @@
 
     - name: Start End Change Email Automation
       ansible.builtin.command:
-        cmd: python huey_consumer.py email_queue.huey
+        cmd: huey_consumer email_queue.huey

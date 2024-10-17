@@ -1,29 +1,44 @@
-from app import db
+from sqlalchemy import Column, Integer, Text, DateTime, func, create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, scoped_session
 
 
-class DetectedError(db.Model):
+def init_history(filename):
+    engine = create_engine(f"sqlite:///{filename}", connect_args={'check_same_thread': False})
+
+    base.metadata.bind = engine
+
+    session = scoped_session(sessionmaker())(bind=engine)
+
+    base.metadata.create_all(engine)
+
+    return session
+
+
+base = declarative_base()
+
+
+class DetectedError(base):
     __tablename__ = 'detected_errors'
-    __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.Text, index=True)
-    ticket = db.Column(db.Text, index=True)
-    sys_component = db.Column(db.Text, index=True)
-    error_message = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
+    id = Column(Integer, primary_key=True)
+    email = Column(Text, index=True)
+    ticket = Column(Text, index=True)
+    sys_component = Column(Text, index=True)
+    error_message = Column(Text, nullable=False)
+    created_at = Column(DateTime, server_default=func.now(), nullable=False)
 
 
-class History(db.Model):
+class History(base):
     __tablename__ = 'history'
-    __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.Text, nullable=False)
-    task_id = db.Column(db.Text, nullable=False)
-    ticket_json = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
-    sys_updated_on = db.Column(db.DateTime, nullable=False)
-    processed_at = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    email = Column(Text, nullable=False)
+    task_id = Column(Text, nullable=False)
+    ticket_json = Column(Text, nullable=False)
+    created_at = Column(DateTime, server_default=func.now(), nullable=False)
+    sys_updated_on = Column(DateTime, nullable=False)
+    processed_at = Column(DateTime)
 
 
 class Ticket:
